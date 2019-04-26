@@ -1,0 +1,1 @@
+This dir will contain all projects and files related to Voice Note Service ( Careen Interview )
