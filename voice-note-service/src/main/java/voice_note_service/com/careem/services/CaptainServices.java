@@ -27,8 +27,8 @@ public class CaptainServices {
 	@GET
 	@Path("/get-notes")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	public List<NoteDto> getNotes() {
-		return captainFacadeSessionbean.getAllCaptinTripNotes(1);
+	public List<NoteDto> getNotes(@QueryParam("tripId") int tripId) {
+		return captainFacadeSessionbean.getAllCaptinTripNotes(tripId);
 	}
 
 	@POST

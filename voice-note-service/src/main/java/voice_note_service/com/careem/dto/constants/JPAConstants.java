@@ -28,10 +28,16 @@ public abstract class JPAConstants {
 	public static final String TRIP_ID = "tripId";
 	public static final String NOTE_STAATUS = "noteStatus";
 	public static final String NOTE_ID = "noteId";
+	public static final String RIDER_ID = "riderId";
+	public static final String RIDER_TRIP_ID = "riderTripId";
+	public static final String RIDER_NOTE_ID = "riderNoteId";
 
 	// Note status codes
 	public static final int SENT = 0;
 	public static final int RECIVED = 1;
 	public static final int READ = 2;
+
+	// Confirmation Msg
+	public static final String CONFIRMATION_MSG = "Done";
 
 }

@@ -33,11 +33,30 @@ public class NoteDaoSessionBean extends GenericDao implements NoteDaoSessionBean
 
 	@Override
 	public int addNote(NoteDto note) {
-		int noteId = 0;
-		init();
-		noteId = persistEntity(note).getId();
-		close();
-		return noteId;
+		try {
+			int noteId = 0;
+			init();
+			noteId = persistEntity(note).getId();
+			close();
+			return noteId;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public NoteDto getNoteById(int noteId) {
+		NoteDto note = new NoteDto();
+		try {
+			init();
+			note = entityManager.createNamedQuery(NoteDto.NAMED_QUERY_GET_NOTE_BY_ID, NoteDto.class)
+					.setParameter(JPAConstants.NOTE_ID, noteId).getSingleResult();
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return note;
 	}
 
 }

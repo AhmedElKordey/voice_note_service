@@ -20,7 +20,10 @@ import voice_note_service.com.careem.dto.generic.GenericDTO;
 @Entity
 @Table(name = JPAConstants.TABLE_NAME_RIDER_NOTES)
 @NamedQueries({
-		@NamedQuery(name = RiderNotesDto.NAMED_QUERY_GET_COUNT_OF_EACH_NOTE_STATUS, query = RiderNotesDto.QUERY_GET_COUNT_OF_EACH_NOTE_STATUS) })
+		@NamedQuery(name = RiderNotesDto.NAMED_QUERY_GET_COUNT_OF_EACH_NOTE_STATUS, query = RiderNotesDto.QUERY_GET_COUNT_OF_EACH_NOTE_STATUS),
+		@NamedQuery(name = RiderNotesDto.NAMED_QUERY_GET_ALL_UNREADED_NOTES_FOR_REIDER, query = RiderNotesDto.QUERY_GET_ALL_UNREADED_NOTES_FOR_REIDER),
+		@NamedQuery(name = RiderNotesDto.NAMED_QUERY_GET_RIDER_NOTE_BY_ID, query = RiderNotesDto.QUERY_GET_RIDER_NOTE_BY_ID) })
+
 public class RiderNotesDto extends GenericDTO {
 	private static final long serialVersionUID = 6275863402231394279L;
 
@@ -28,6 +31,14 @@ public class RiderNotesDto extends GenericDTO {
 	static final String QUERY_GET_COUNT_OF_EACH_NOTE_STATUS = "select count(r) from RiderNotesDto r where r.tripId =:"
 			+ JPAConstants.TRIP_ID + " and r.noteStatus =:" + JPAConstants.NOTE_STAATUS + " and r.noteId =:"
 			+ JPAConstants.NOTE_ID;
+
+	public static final String NAMED_QUERY_GET_ALL_UNREADED_NOTES_FOR_REIDER = "getAllunreadedNotesForRider";
+	static final String QUERY_GET_ALL_UNREADED_NOTES_FOR_REIDER = "select r from RiderNotesDto r where r.noteStatus = 0 and r.riderTripID =:"
+			+ JPAConstants.RIDER_TRIP_ID;
+
+	public static final String NAMED_QUERY_GET_RIDER_NOTE_BY_ID = "getRiderNoteById";
+	static final String QUERY_GET_RIDER_NOTE_BY_ID = "select r from RiderNotesDto r where r.id =:"
+			+ JPAConstants.RIDER_NOTE_ID;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

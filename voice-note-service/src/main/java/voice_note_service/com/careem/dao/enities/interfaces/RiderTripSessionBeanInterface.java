@@ -13,4 +13,8 @@ import voice_note_service.com.careem.dto.entities.RiderTripsDto;
  */
 public interface RiderTripSessionBeanInterface {
 	List<RiderTripsDto> getAllRiderForSpecificTrip(int tripId);
+
+	List<RiderTripsDto> getAllRiderForSpecificRider(int riderId);
+
+	RiderTripsDto addRiderTrip(int riderId, int tripId);
 }

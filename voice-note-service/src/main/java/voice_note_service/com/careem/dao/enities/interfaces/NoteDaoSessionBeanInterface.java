@@ -8,4 +8,6 @@ public interface NoteDaoSessionBeanInterface {
 	List<NoteDto> getNotesByTripId(int tripId);
 
 	int addNote(NoteDto note);
+
+	NoteDto getNoteById(int noteId);
 }

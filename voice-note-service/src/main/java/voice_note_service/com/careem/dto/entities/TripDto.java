@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,8 +26,12 @@ import voice_note_service.com.careem.dto.generic.GenericDTO;
 @XmlRootElement
 @Entity
 @Table(name = JPAConstants.TABLE_NAME_TRIP)
+@NamedQueries({ @NamedQuery(name = TripDto.NANED_QUERY_GET_ALL_TRIPS, query = TripDto.QUERY_GET_ALL_TRIPS) })
 public class TripDto extends GenericDTO {
 	private static final long serialVersionUID = -2200848783062693413L;
+
+	public static final String NANED_QUERY_GET_ALL_TRIPS = "getAllTrips";
+	static final String QUERY_GET_ALL_TRIPS = "Select t from TripDto t";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

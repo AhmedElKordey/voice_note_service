@@ -24,7 +24,8 @@ import voice_note_service.com.careem.dto.generic.GenericDTO;
 @Entity
 @Table(name = JPAConstants.TABLE_NAME_NOTES)
 @NamedQueries({
-		@NamedQuery(name = NoteDto.NAMED_QUERY_GET_ALL_NOTES_FOR_SPECIFIC_TRIP, query = NoteDto.QUERY_GET_ALL_NOTES_FOR_SPECIFIC_TRIP) })
+		@NamedQuery(name = NoteDto.NAMED_QUERY_GET_ALL_NOTES_FOR_SPECIFIC_TRIP, query = NoteDto.QUERY_GET_ALL_NOTES_FOR_SPECIFIC_TRIP),
+		@NamedQuery(name = NoteDto.NAMED_QUERY_GET_NOTE_BY_ID, query = NoteDto.QUERY_GET_NOTE_BY_ID) })
 @XmlRootElement(name = "NoteDto")
 public class NoteDto extends GenericDTO {
 	private static final long serialVersionUID = -135250093734954247L;
@@ -32,6 +33,9 @@ public class NoteDto extends GenericDTO {
 	public static final String NAMED_QUERY_GET_ALL_NOTES_FOR_SPECIFIC_TRIP = "getAllNotesForSpecificTrip";
 	static final String QUERY_GET_ALL_NOTES_FOR_SPECIFIC_TRIP = "Select n FROM NoteDto n where n.tripId =:"
 			+ JPAConstants.TRIP_ID;
+
+	public static final String NAMED_QUERY_GET_NOTE_BY_ID = "getNoteById";
+	static final String QUERY_GET_NOTE_BY_ID = "Select n FROM NoteDto n where n.id =:" + JPAConstants.NOTE_ID;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

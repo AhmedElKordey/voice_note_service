@@ -20,13 +20,46 @@ public class RiderTripsDaoSessionBean extends GenericDao implements RiderTripSes
 	@Override
 	public List<RiderTripsDto> getAllRiderForSpecificTrip(int tripId) {
 		List<RiderTripsDto> riderTrips = new ArrayList<>();
-
-		init();
-		riderTrips.addAll(
-				entityManager.createNamedQuery(RiderTripsDto.NAMED_QUERY_GET_ALL_RIDER_TRIPS, RiderTripsDto.class)
-						.setParameter(JPAConstants.TRIP_ID, tripId).getResultList());
-		close();
-
+		try {
+			init();
+			riderTrips.addAll(entityManager
+					.createNamedQuery(RiderTripsDto.NAMED_QUERY_GET_ALL_RIDER_TRIPS_PER_TRIP, RiderTripsDto.class)
+					.setParameter(JPAConstants.TRIP_ID, tripId).getResultList());
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return riderTrips;
+	}
+
+	@Override
+	public List<RiderTripsDto> getAllRiderForSpecificRider(int riderId) {
+		List<RiderTripsDto> riderTrips = new ArrayList<>();
+		try {
+			init();
+			riderTrips.addAll(entityManager
+					.createNamedQuery(RiderTripsDto.NAMED_QUERY_GET_ALL_RIDER_TRIPS_PER_RIDER, RiderTripsDto.class)
+					.setParameter(JPAConstants.RIDER_ID, riderId).getResultList());
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return riderTrips;
+	}
+
+	@Override
+	public RiderTripsDto addRiderTrip(int riderId, int tripId) {
+		RiderTripsDto riderTrip = new RiderTripsDto();
+		riderTrip.setRiderId(riderId);
+		riderTrip.setTripId(tripId);
+		RiderTripsDto persistedRiderTrip = new RiderTripsDto();
+		try {
+			init();
+			persistedRiderTrip = persistEntity(riderTrip);
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return persistedRiderTrip;
 	}
 }

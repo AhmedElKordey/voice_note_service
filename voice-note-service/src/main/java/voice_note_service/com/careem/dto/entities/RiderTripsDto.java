@@ -26,13 +26,19 @@ import voice_note_service.com.careem.dto.generic.GenericDTO;
 @Table(name = JPAConstants.TABLE_NAME_RIDER_TRIPS)
 @XmlRootElement
 @NamedQueries({
-		@NamedQuery(name = RiderTripsDto.NAMED_QUERY_GET_ALL_RIDER_TRIPS, query = RiderTripsDto.QUERY_GET_ALL_RIDER_TRIPS) })
+		@NamedQuery(name = RiderTripsDto.NAMED_QUERY_GET_ALL_RIDER_TRIPS_PER_TRIP, query = RiderTripsDto.QUERY_GET_ALL_RIDER_TRIPS_PER_TRIP),
+		@NamedQuery(name = RiderTripsDto.NAMED_QUERY_GET_ALL_RIDER_TRIPS_PER_RIDER, query = RiderTripsDto.QUERY_GET_ALL_RIDER_TRIPS_PER_RIDER) })
 public class RiderTripsDto extends GenericDTO {
 	private static final long serialVersionUID = -1524126714686579361L;
 
-	public static final String NAMED_QUERY_GET_ALL_RIDER_TRIPS = "getAllRiderTrips";
-	static final String QUERY_GET_ALL_RIDER_TRIPS = "Select rt FROM RiderTripsDto rt where rt.tripId =:"
+	public static final String NAMED_QUERY_GET_ALL_RIDER_TRIPS_PER_TRIP = "getAllRiderTripsPerTrip";
+	static final String QUERY_GET_ALL_RIDER_TRIPS_PER_TRIP = "Select rt FROM RiderTripsDto rt where rt.tripId =:"
 			+ JPAConstants.TRIP_ID;
+
+	public static final String NAMED_QUERY_GET_ALL_RIDER_TRIPS_PER_RIDER = "getAllRiderTripsPerRider";
+	static final String QUERY_GET_ALL_RIDER_TRIPS_PER_RIDER = "Select rt FROM RiderTripsDto rt where rt.riderId =:"
+			+ JPAConstants.RIDER_ID;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID", nullable = false)
