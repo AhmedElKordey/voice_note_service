@@ -24,4 +24,6 @@ public interface RiderNotesDaoSessionBeanInterface {
 	RiderNotesDto updateStatusOfNotes(RiderNotesDto riderNote, int status);
 
 	RiderNotesDto getRiderNoteById(int riderNoteId);
+
+	RiderNotesDto getRiderNoteByRiderTripNoteIds(int noteId, int tripId, int riderTripId);
 }

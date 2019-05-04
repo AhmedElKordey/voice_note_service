@@ -10,6 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema vns
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `vns` ;
 
 -- -----------------------------------------------------
 -- Schema vns
@@ -65,9 +66,11 @@ DROP TABLE IF EXISTS `vns`.`notes` ;
 
 CREATE TABLE IF NOT EXISTS `vns`.`notes` (
   `ID` INT(11) NOT NULL AUTO_INCREMENT,
-  `Note` VARCHAR(45) NULL DEFAULT NULL,
+  `NoteTitle` VARCHAR(45) NULL DEFAULT NULL,
   `TimeStamp` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `TripId` INT(11) NULL DEFAULT NULL,
+  `NotePath` VARCHAR(45) NULL DEFAULT NULL,
+  `Note` MEDIUMBLOB NULL DEFAULT NULL,
   PRIMARY KEY (`ID`),
   INDEX `ID_idx` (`TripId` ASC),
   CONSTRAINT `ID`
@@ -76,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `vns`.`notes` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -119,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `vns`.`rider_trips` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 15
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -155,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `vns`.`rider_notes` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
+AUTO_INCREMENT = 52
 DEFAULT CHARACTER SET = latin1;
 
 

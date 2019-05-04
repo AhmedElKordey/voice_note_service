@@ -49,8 +49,9 @@ public class RiderServices {
 	@GET
 	@Path("/read-note")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	public RiderNotesDto readNote(@QueryParam("riderNoteId") int riderNoteId) {
-		return riderFacadeSessionbean.readNote(riderNoteId);
+	public RiderNotesDto readNote(@QueryParam("noteId") int noteId, @QueryParam("tripId") int tripId,
+			@QueryParam("riderId") int riderId) {
+		return riderFacadeSessionbean.readNote(noteId, tripId, riderId);
 	}
 
 }

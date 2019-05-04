@@ -108,4 +108,21 @@ public class RiderNotesDaoSessionBean extends GenericDao implements RiderNotesDa
 		return riderNote;
 	}
 
+	@Override
+	public RiderNotesDto getRiderNoteByRiderTripNoteIds(int noteId, int tripId, int riderTripId) {
+		RiderNotesDto riderNote = new RiderNotesDto();
+		try {
+			init();
+			riderNote = entityManager
+					.createNamedQuery(RiderNotesDto.NAMED_QUERY_GET_RIDER_NOTE_BY_NOTE_TRIP_RIDER_IDS,
+							RiderNotesDto.class)
+					.setParameter(JPAConstants.NOTE_ID, noteId).setParameter(JPAConstants.TRIP_ID, tripId)
+					.setParameter(JPAConstants.RIDER_TRIP_ID, riderTripId).getSingleResult();
+			close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return riderNote;
+	}
+
 }

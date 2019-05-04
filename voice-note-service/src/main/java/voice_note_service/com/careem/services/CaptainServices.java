@@ -2,6 +2,7 @@ package voice_note_service.com.careem.services;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -21,7 +22,7 @@ public class CaptainServices {
 	@Path("/test-service")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getIt() {
-		return "Got it now !";
+		return "Iam Working !";
 	}
 
 	@GET
@@ -33,11 +34,9 @@ public class CaptainServices {
 
 	@POST
 	@Path("/add-note")
+	@Consumes(MediaType.APPLICATION_JSON + ";charset=utf-8")
 	@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
-	public int addNote(@QueryParam("note") String noteContext, @QueryParam("tripId") int tripId) {
-		NoteDto note = new NoteDto();
-		note.setNotes(noteContext);
-		note.setTripId(tripId);
+	public int addNote(NoteDto note) {
 		return captainFacadeSessionbean.addNote(note);
 	}
 }

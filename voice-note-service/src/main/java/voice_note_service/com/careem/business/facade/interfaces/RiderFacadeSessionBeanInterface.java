@@ -24,5 +24,5 @@ public interface RiderFacadeSessionBeanInterface {
 	List<NoteDto> getAllUnReadedNotes(int riderTripId);
 
 	// Read Notification
-	RiderNotesDto readNote(int riderNoteId);
+	RiderNotesDto readNote(int noteId, int tripId, int riderId);
 }

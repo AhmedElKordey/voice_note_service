@@ -42,8 +42,14 @@ public class NoteDto extends GenericDTO {
 	@Column(name = "ID", nullable = false)
 	private Integer id;
 
+	@Column(name = "NoteTitle")
+	private String noteTitle;
+
+	@Column(name = "NotePath")
+	private String notePath;
+
 	@Column(name = "Note")
-	private String notes;
+	private byte[] note;
 
 	@Column(name = "TripId")
 	private Integer tripId;
@@ -63,14 +69,6 @@ public class NoteDto extends GenericDTO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String note) {
-		notes = note;
 	}
 
 	public Integer getTripId() {
@@ -105,4 +103,27 @@ public class NoteDto extends GenericDTO {
 		this.readCount = readCount;
 	}
 
+	public String getNoteTitle() {
+		return noteTitle;
+	}
+
+	public void setNoteTitle(String noteTitle) {
+		this.noteTitle = noteTitle;
+	}
+
+	public String getNotePath() {
+		return notePath;
+	}
+
+	public void setNotePath(String notePath) {
+		this.notePath = notePath;
+	}
+
+	public byte[] getNote() {
+		return note;
+	}
+
+	public void setNote(byte[] note) {
+		this.note = note;
+	}
 }

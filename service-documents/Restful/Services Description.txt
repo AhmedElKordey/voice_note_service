@@ -1,0 +1,51 @@
+Service name : careem/captain/test-service
+Type		 : Get
+produce      : Text
+Consume      : no thing 
+Query parm   : no thing
+Description  : used to test if service deployed correctly or not 
+================================================================================================
+Service name : careem/captain/get-notes
+Type		 : Get
+produce      : List<NoteDto> (JSON)
+Consume      : no thing
+Query parm   : tripId (int)
+Description  : used to return all notes related to specific trip with status ( how many received , readied or sent )
+================================================================================================
+Service name : careem/captain/add-note
+Type		 : Post
+produce      : int (JSON) - note id
+Consume      : NoteDto (JSON) 
+Query parm   : no thing
+Description  : used by captain to send note for rider trip
+================================================================================================
+Service name : careem/rider/get-available-trips
+Type		 : Get
+produce      : List<TripDto> (JSON)
+Consume      : no thing
+Query parm   : riderId (int)
+Description  : used to return all available trips which rider can join it
+================================================================================================
+Service name : careem/rider/join-trip
+Type		 : Get
+produce      : Confirmation Msg (String - JSON)
+Consume      : no thing
+Query parm   : tripId (int) && riderId (int)
+Description  : used by rider to join specifc trip ( depends on previous service )
+================================================================================================
+Service name : careem/rider/get-notes
+Type		 : Get
+produce      : List<NoteDto> (JSON)
+Consume      : no thing
+Query parm   : riderId (int)
+Description  : used by rider to return all unreaded notes
+================================================================================================
+Service name : careem/rider/read-note
+Type		 : Pose
+produce      : RiderNotesDto (JSON)
+Consume      : no thing
+Query parm   : noteId (int) && tripId (int) && riderId (int)
+Description  :  used by rider to read specifc note 
+================================================================================================
+Hints :-
+	all notes can saved as text by insert note title and sound by send it as sound file

@@ -17,4 +17,6 @@ public interface RiderTripSessionBeanInterface {
 	List<RiderTripsDto> getAllRiderForSpecificRider(int riderId);
 
 	RiderTripsDto addRiderTrip(int riderId, int tripId);
+
+	RiderTripsDto getRiderTrip(int riderId, int tripId);
 }

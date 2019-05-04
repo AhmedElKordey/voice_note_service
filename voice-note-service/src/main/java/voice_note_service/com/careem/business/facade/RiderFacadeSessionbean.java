@@ -105,7 +105,12 @@ public class RiderFacadeSessionbean implements RiderFacadeSessionBeanInterface {
 	}
 
 	@Override
-	public RiderNotesDto readNote(int riderNoteId) {
+	public RiderNotesDto readNote(int noteId, int tripId, int riderId) {
+		// 1- get RiderTrip Id
+		int riderTripId = riderTripsDaoSessionBean.getRiderTrip(riderId, tripId).getId();
+		// 2- get RiderNote Id
+		int riderNoteId = riderNotesDaoSessionBean.getRiderNoteByRiderTripNoteIds(noteId, tripId, riderTripId).getId();
+		// 3- updte status
 		return riderNotesDaoSessionBean.updateStatusOfNotes(riderNotesDaoSessionBean.getRiderNoteById(riderNoteId),
 				JPAConstants.READ);
 	}
